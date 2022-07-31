@@ -1,22 +1,21 @@
 <?php
-class ClienteDAO{
+class clienteDAO{
     private $id;
     private $nombre;
     private $apellido;
     private $correo;
     private $clave;
     private $telefono;
-    private $cedula;
     private $metodo_pago;
     
-    public function clienteDAO($id=0, $nombre="", $apellido="", $correo="", $clave="", $telefono="", $cedula="", $metodo_pago="") {
+    public function clienteDAO($id=0, $nombre="", $apellido="", $correo="", $clave="", $telefono="", $metodo_pago="") {
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;
         $this -> correo = $correo;
         $this -> clave = $clave;
-        $this -> telefono = $telefono;
-        $this -> metodo_pago=$metodo_pago;
+        $this -> estado = $estado;
+        $this -> codigo_activacion = $codigo_activacion;
     }
     
     public function crear(){
@@ -25,14 +24,18 @@ class ClienteDAO{
                 '" . $this -> nombre . "',
                 '" . $this -> apellido . "',
                 '" . $this -> correo . "',
-                '" . md5($this -> clave) . "',
+                '" . $this -> clave . "',
                 '" . $this -> codigo_activacion . "'
                 )";
     }
+
+    public function autenticar(){
+        return "select idCliente, estado
+                from cliente
+                where correo = '" . $this -> correo . "' and clave = '" . md5($this -> clave) . "'";
+    }
     
-
-
-
+   
     
     public function Consultar(){
         return "select nombre, apellido, correo
@@ -41,6 +44,6 @@ class ClienteDAO{
     }
     
     
-  
+   
 }
 ?>
