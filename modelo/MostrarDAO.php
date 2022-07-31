@@ -2,9 +2,9 @@
 
 require_once "Conexion.php";
 
-class ClienteDAO{
+class MostrarDAO{
 
-    static public function mostrarClientes($tabla){
+    static public function mostrar($tabla){
         $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
         $stmt->execute();
 

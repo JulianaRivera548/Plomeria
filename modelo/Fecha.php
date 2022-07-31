@@ -8,7 +8,7 @@ class Fecha{
     private $hora;
             
     function __construct() {
-        date_default_timezone_set('UTC');
+        date_default_timezone_set('Etc/GMT+5');
         $this->dia = date("d");
         $this->mes = date("m");
         $this->año = date("Y");
