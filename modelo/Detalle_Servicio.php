@@ -7,12 +7,12 @@ class Detalle_Servicio {
     private $garantia;
     private $insumos;
     
-    function __construct($id, $repuestos, $descripcion, $garantia, $insumos) {
-        $this->id = $id;
-        $this->repuestos = $repuestos;
+    function __construct($descripcion) {
+        $this->id = 0;
+        $this->repuestos = "";
         $this->descripcion = $descripcion;
-        $this->garantia = $garantia;
-        $this->insumos = $insumos;
+        $this->garantia = "";
+        $this->insumos = "";
     }
     
     

@@ -1,43 +1,44 @@
-    <?php $tipoServicio = ctrCliente::mostrarTipos_servicio(); ?>
+    <?php 
+    $tipoServicio = ctrCliente::mostrar('tipo_servicio'); 
+    session_start();
+    //echo $_SESSION['idCliente'];
+    ?>
 
     
     <br>
     <div class="card">
-      <div class="card-body" id="error"></div>
+      <div class="card-body" id="error"><?php echo $_SESSION['error']; ?></div>
     </div>
     <div class="card">
         <div class="card-body" style="display: inline-flex;">
           <div class="d-flex flex-column" style="width: 70vw;">
-            <textarea cols="130" rows="5" placeholder="Detalle del daño" id="textArea"></textarea>
+          <form name="formularioDetalles" action="index.php?pagina=ValidarDetalles" method="POST">
+            <textarea cols="130" rows="5" placeholder="Detalle del daño" id="textArea" name="textAreaDetalle"></textarea>
             <br>
-            <select class="form-select" aria-label="Default select example" id="tipos">
+            <select class="form-select" aria-label="Default select example" id="tipos" name="select">
               <option selected>Tipo de arreglo</option>
-              <option value="tuberias">Tuberías</option>
-              <option value="electrodomesticos">Electrodomésticos</option>
-              <option value="fugas">Fugas</option>
-              <option value="otros">Otras averías</option>
+              <?php foreach($tipoServicio as $i => $row){ ?>
+              <option value="<?php echo $i+1; ?>"><?php echo $row['Tipo_Servicio']; ?></option>
+              <?php } ?>
             </select>
+            <div style="align-self: center; width: 20vw; padding: 20px;">
+              <center><button type="submit" class="btn btn-dark" style="text-align: center;" onclick="enviar();">enviar</button></center>
+            </div>
+          </form>
 
-            <!-- <div class="dropdown" style="text-align: center;">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                  Tipo de arreglo
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                  <li><a class="dropdown-item" href="#">Tuberías</a></li>
-                  <li><a class="dropdown-item" href="#">Electrodomésticos</a></li>
-                  <li><a class="dropdown-item" href="#">Fugas</a></li>
-                  <li><a class="dropdown-item" href="#">Otras averías</a></li>
-                </ul>
-              </div>-->
           </div> 
-          <div style="align-self: center; width: 20vw;">
-            <center><button type="button" class="btn btn-dark" style="text-align: center;" onclick="enviar();">enviar</button></center>
-          </div>
+          
         </div>
+        
+        
 
         <div class="card">
           <div class="card-body">
-            Tenga en cuenta que los precios base para su tipo de reparacion son los que están en la tabla de abajo
+            Tenga en cuenta que:
+            <ul>
+             <li>Los precios base para su tipo de reparacion son los que están en la tabla de abajo</li>
+             <li>Automáticamente se le asignará un valor de visita, pero se descuenta si decide aceptar lo que acuerda el plomero</li>
+            </ul>
           </div>
         </div>
 
@@ -55,7 +56,7 @@
               foreach($tipoServicio as $key => $value){
               ?>
               <tr>
-              <th scope="row"><?php $key ?></th>
+              <th scope="row"><?php echo $key+1 ?></th>
               <td><?php echo $value['Tipo_Servicio']; ?></td>
               <td><?php echo $value['Valor']; ?></td>
               </tr>
@@ -73,7 +74,7 @@
         }else{
           
 
-          window.location.href = "index.php?pagina=SesionCliente";
+          window.location.href = "index.php?pagina=prueba";
         }
       }
     </script>

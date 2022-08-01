@@ -8,12 +8,11 @@ class Factura {
     private $hora;
     private $id_cliente;
     
-    function __construct($id, $valor_total, $id_cliente) {
-        $this->id = $id;
-        $this->valor_total = $valor_total;
+    function __construct($id_cliente) {
+        $this->id = 0;
         $this->id_cliente = $id_cliente;
         
-        
+        $this->valor_total = 0;
         $this->valor_visita = 10000;
         $fecha = new Fecha();
         $this->fecha = $fecha->getFecha();
@@ -21,6 +20,16 @@ class Factura {
         
     }
     
+    function aceptación($valor, $acepta){
+        if($acepta){
+            $this->valor_total = $valor;
+            $this->valor_visita = 0;
+        }else{
+            $this->valor_total = $this->valor_visita;
+        }
+        return $this->valor_total;
+    }
+            
     
     function getId() {
         return $this->id;

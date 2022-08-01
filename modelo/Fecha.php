@@ -20,7 +20,7 @@ class Fecha{
         return $this->hora;
     }
 
-        function getDia() {
+    function getDia() {
         return $this->dia;
     }
 

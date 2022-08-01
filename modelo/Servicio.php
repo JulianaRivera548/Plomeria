@@ -5,25 +5,25 @@ class Servicio {
     private $valorServicio;
     private $fecha;
     private $idCliente;
-    private $TipoServicio;
+    private $idTipoServicio;
     private $direccion;
     private $Factura;
     private $DetalleServicio;
     private $idAdministrador;
     private $estado;
     
-    function __construct($id, $idCliente, $Factura, $DetalleServicio, $idAdministrador) {
-        $this->id = $id;
+    function __construct($idTipoServicio, $idAdministrador) {
+        $this->id = 0;
         $fecha = new Fecha();
         $this->fecha = $fecha->getFecha();
         $this->idCliente = 0;
-        $this->TipoServicio = "";
+        $this->idTipoServicio = $idTipoServicio;
         $this->direccion = "cra 12 #34-56";
-        $this->Factura = $Factura;
-        $this->valorServicio = $Factura->valor_visita;
-        $this->DetalleServicio = $DetalleServicio;
+        $this->Factura = NULL;
+        $this->valorServicio = 0;
+        $this->DetalleServicio = NULL;
         $this->idAdministrador = $idAdministrador;
-        $this->estado = "no pago";
+        $this->estado = 1;
     }
 
     
@@ -45,8 +45,8 @@ class Servicio {
         return $this->idCliente;
     }
 
-    function getTipoServicio() {
-        return $this->TipoServicio;
+    function getIdTipoServicio() {
+        return $this->idTipoServicio;
     }
 
     function getDireccion() {
