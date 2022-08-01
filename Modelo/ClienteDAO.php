@@ -30,9 +30,12 @@ class ClienteDAO{
                 )";
     }
     
-
-
-
+    public function Autenticar(){
+        return "select idCliente
+                from cliente where Correo = '" . $this -> correo . "' and Clave = '" . $this -> clave . "'";
+        
+    }
+    
     
     public function Consultar(){
         return "select nombre, apellido, correo

@@ -1,6 +1,6 @@
 <?php
-require_once 'Modelo/Conexion.php';
-require_once 'Modelo/AdministradorDAO.php';
+require_once 'Conexion.php';
+require_once 'AdministradorDAO.php';
 class Administrador{
     private $id;
     private $nombre;
@@ -42,38 +42,17 @@ class Administrador{
     
     public function autenticar(){
         $this -> Conexion -> abrir();
-        $this -> Conexion -> ejecutar($this -> AdministradorDAO -> autenticar());
+        $this -> Conexion -> ejecutar($this -> AdministradorDAO -> Autenticar());
         $this -> Conexion -> cerrar();
         if($this -> Conexion -> numFilas() == 1){
             $this -> id = $this -> Conexion -> extraer()[0];
             return true;
+            
         }else{
             return false;
         }
     }
-    
-    public function consultar(){
-        $this -> Conexion -> abrir();
-        $this -> Conexion -> ejecutar($this -> AdministradorDAO -> consultar());
-        $this -> Conexion -> cerrar();
-        $datos = $this -> Conexion -> extraer();
-        $this -> nombre = $datos[0];
-        $this -> apellido = $datos[1];
-        $this -> correo = $datos[2];
-    }
-    
-    
-    public function consultarTodos(){
-        $this -> Conexion -> abrir();
-        $this -> Conexion -> ejecutar($this -> AdministradorDAO -> ConsultarTodos());
-        $administradores = array();
-        while(($resultado = $this -> Conexion -> extraer()) != null){
-            array_push($administradores, new administrador($resultado[0], $resultado[1], $resultado[2], $resultado[3], ""));
-        
-        }
-        $this -> Conexion -> cerrar();
-        return  $administradores;
-    }
+ 
     
     
 }

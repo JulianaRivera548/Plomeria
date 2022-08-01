@@ -1,25 +1,5 @@
 
-<?php 
 
-$Administrador = new Administrador($_SESSION["id"]);
-$Administrador -> Consultar();
-
-?>
-
-<div class="container">
-	<div class="row mt-3">
-		
-		<div class="col text-center">
-
-		<div class="card card text-dark bg-light">
-			<h5 class="card-header"><?php echo $Administrador->getNombre()." ".$Administrador->getApellido();?></h5>
-			<div class="card-body">
-				<?php echo $Administrador-> getCorreo();?>
-			</div>
-		</div>
-		</div>
-</div>
-</d
 
 
 <div class="container-fluid" class="navbar " style="background-color: #e3eeff;">
@@ -67,4 +47,3 @@ $Administrador -> Consultar();
 				
 				
 
-</html>

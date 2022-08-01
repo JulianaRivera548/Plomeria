@@ -25,19 +25,10 @@ class AdministradorDAO{
     public function Autenticar(){
        return "select idAdministrador
                 from administrador where Correo = '" . $this -> correo . "' and Clave = '" . $this -> clave . "'";
-       
+    
     }
     
-    public function Consultar(){
-        return "select nombre, apellido, correo
-                from administrador
-                where idAdministrador = '" . $this -> id . "'";
-    }
-    
-    public function ConsultarTodos(){
-        return "select idAdministrador, nombre, apellido, correo
-                from administrador";
-    }
+   
     
     
     
