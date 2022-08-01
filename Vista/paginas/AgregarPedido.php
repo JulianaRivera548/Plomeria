@@ -71,6 +71,8 @@
         if(document.getElementById("textArea").value == "" || document.getElementById("tipos").selectedIndex == 0){
           document.getElementById("error").innerText = "Por favor, llene los campos";
         }else{
+          
+
           window.location.href = "index.php?pagina=SesionCliente";
         }
       }
