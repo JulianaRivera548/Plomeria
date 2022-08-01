@@ -1,15 +1,5 @@
 
 
-<html>
-<head>
-
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	 crossorigin="anonymous">
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-crossorigin="anonymous"></script>
-
-</head>
 
 
 <div class="container-fluid" class="navbar " style="background-color: #e3eeff;">
@@ -28,13 +18,17 @@ crossorigin="anonymous"></script>
 					<div class="collapse navbar-collapse" id="navbarNav">
 						<ul class="navbar-nav ">
 						
-						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
-								href="#" id="navbarDropdown" role="button"
-								data-bs-toggle="dropdown" aria-expanded="false">Administrador</a>
-								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="">Colsultar Plomeros</a></li>
-										<li><a class="dropdown-item" href="#">Consultar Clientes</a></li>
-								</ul></li>
+						<li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
 						
 						
 							
@@ -51,19 +45,5 @@ crossorigin="anonymous"></script>
 				</div>
 				
 				
-				<div class="container">
-	<div class="row mt-3">
-		
-		<div class="col text-center">
+				
 
-		<div class="card card text-dark bg-light">
-			<h5 class="card-header">Nombre Administrador</h5>
-			<div class="card-body">
-				Correo
-			</div>
-		</div>
-		</div>
-</div>
-</div>
-
-</html>
