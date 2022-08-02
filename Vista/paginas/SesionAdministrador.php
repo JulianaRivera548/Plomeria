@@ -1,6 +1,8 @@
-
-
-
+<?php
+include_once '../../Modelo/Administrador.php';
+$Administrador = new Administrador($_SESSION["id"]);
+$Administrador->consultar();
+?>
 
 <div class="container-fluid" class="navbar " style="background-color: #e3eeff;">
 	

@@ -1,14 +1,15 @@
 <?php
 require_once "Conexion.php";
 require_once "ClienteDAO.php";
-class cliente{
+class Cliente{
     private $id;
     private $nombre;
     private $apellido;
     private $correo;
     private $clave;
-    private $estado;
-    private $codigo_activacion;
+    private $cedula;
+    private $telefono;
+    private $metodo_pago;
     private $conexion;
     private $clienteDAO;
     
@@ -55,29 +56,32 @@ class cliente{
     /**
      * @return mixed
      */
-    public function getEstado()
+    public function getCedula()
     {
         return $this->estado;
     }
     
-    /**
-     * @return mixed
-     */
-    public function getCodigo_activacion()
-    {
-        return $this->codigo_activacion;
+    public function getMetodo_pago(){
+        return $this->metodo_pago;
     }
     
-    public function Cliente($id=0, $nombre="", $apellido="", $correo="", $clave="", $estado="", $codigo_activacion="") {
+    public function getTelefono(){
+        return $this ->telefono;
+    }
+    
+    
+    
+    public function Cliente($id=0, $nombre="", $apellido="", $correo="", $clave="", $cedula="", $metodo_pago="", $telefono="") {
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;
         $this -> correo = $correo;
         $this -> clave = $clave;
-        $this -> estado = $estado;
-        $this -> codigo_activacion = $codigo_activacion;
+           $this->cedula =$cedula;
+           $this->metodo_pago = $metodo_pago;
+           $this->telefono =$telefono;
         $this -> Conexion = new Conexion();
-        $this -> ClienteDAO = new ClienteDAO($this -> id, $this -> nombre, $this -> apellido, $this -> correo, $this -> clave, $this -> estado, $this -> codigo_activacion);
+        $this -> ClienteDAO = new ClienteDAO($this -> id, $this -> nombre, $this -> apellido, $this -> correo, $this -> clave, $this -> cedula, $this -> metodo_pago,$this->telefono);
     }
     
    
@@ -94,6 +98,28 @@ class cliente{
             return true;
         }
     }
+    
+    public function existeCorreo(){
+        $this -> Conexion -> abrir();
+        $this -> Conexion -> ejecutar($this -> ClienteDAO -> existeCorreo());
+        $resultado = $this -> Conexion -> extraer();
+        $this -> Conexion -> cerrar();
+        return ($resultado[0]==0)?false:true;
+    }
+    
+    
+    public function crear(){
+        $this -> Conexion -> abrir();
+        $this -> Conexion -> ejecutar($this -> ClienteDAO -> crear());
+        $this -> Conexion -> ejecutar($this -> ClienteDAO -> consultarUltimoId());
+        $resultado = $this -> Conexion -> extraer();
+        $this -> Conexion -> cerrar();
+        return $resultado[0];
+    }
+    
+    
+    
+    
     
 
     

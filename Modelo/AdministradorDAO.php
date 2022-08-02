@@ -28,7 +28,17 @@ class AdministradorDAO{
     
     }
     
-   
+    public function existeCorreo(){
+        return "select count(idAdministrador)
+                from administrador
+                where Correo = '" . $this -> correo . "'";
+    }
+    
+    public function Consultar(){
+        return "select nombre, apellido, correo
+                from administrador
+                where idAdministrador = '" . $this -> id . "'";
+    }
     
     
     

@@ -9,7 +9,7 @@ class ClienteDAO{
     private $cedula;
     private $metodo_pago;
     
-    public function clienteDAO($id=0, $nombre="", $apellido="", $correo="", $clave="", $telefono="", $cedula="", $metodo_pago="") {
+    public function clienteDAO($id=0, $nombre="", $apellido="", $correo="", $clave="", $cedula="", $metodo_pago="",$telefono="") {
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;
@@ -20,15 +20,18 @@ class ClienteDAO{
     }
     
     public function crear(){
-        return "insert into cliente (nombre, apellido, correo, clave, codigo_activacion)
+        return "insert into cliente (Nombre, Apellido, Correo, Clave, Telefono, Cedula, Metodo_pago_idMetodo_pago)
                 values (
                 '" . $this -> nombre . "',
                 '" . $this -> apellido . "',
                 '" . $this -> correo . "',
-                '" . md5($this -> clave) . "',
-                '" . $this -> codigo_activacion . "'
+                '" . $this->clave. "',
+                '" . $this -> telefono . "',
+                '" . $this -> cedula . "',
+                '" . $this -> metodo_pago . "'
                 )";
     }
+    
     
     public function Autenticar(){
         return "select idCliente
@@ -41,6 +44,16 @@ class ClienteDAO{
         return "select nombre, apellido, correo
                 from administrador
                 where idAdministrador = '" . $this -> id . "'";
+    }
+    
+    public function existeCorreo(){
+        return "select count(idCliente)
+                from cliente
+                where Correo = '" . $this -> correo . "'";
+    }
+    
+    public function consultarUltimoId(){
+        return "select last_insert_id()";
     }
     
     

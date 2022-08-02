@@ -52,7 +52,25 @@ class Administrador{
             return false;
         }
     }
+    
+    public function existeCorreo(){
+        $this -> Conexion -> abrir();
+        $this -> Conexion -> ejecutar($this -> AdministradorDAO -> existeCorreo());
+        $resultado = $this -> Conexion -> extraer();
+        $this -> Conexion -> cerrar();
+        return ($resultado[0]==0)?false:true;
+    }
  
+    
+    public function consultar(){
+        $this -> Conexion -> abrir();
+        $this -> Conexion -> ejecutar($this -> AdministradorDAO -> consultar());
+        $this -> Conexion -> cerrar();
+        $datos = $this -> Conexion -> extraer();
+        $this -> nombre = $datos[0];
+        $this -> apellido = $datos[1];
+        $this -> correo = $datos[2];
+    }
     
     
 }
