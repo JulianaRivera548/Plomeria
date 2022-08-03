@@ -1,7 +1,12 @@
 <?php
-include_once '../../Modelo/Administrador.php';
-$Administrador = new Administrador($_SESSION["id"]);
-$Administrador->consultar();
+
+
+if(!isset($_SESSION)) { 
+	session_start; 
+	}
+
+
+
 ?>
 
 <div class="container-fluid" class="navbar " style="background-color: #e3eeff;">
@@ -21,25 +26,51 @@ $Administrador->consultar();
 						<ul class="navbar-nav ">
 						
 						<li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+           Consultar
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            
+            <li><a class="dropdown-item" href="Vista/paginas/ConsultarPlomeros.php">Plomeros</a></li>
+            <li><a class="dropdown-item" href="Vista/paginas/ConsultarServicio.php">Servicios</a></li>
           </ul>
         </li>
+		</ul>
+
 						
-						
-							
+						<ul class="navbar-nav ms-auto">
+
+
+
+
+
+</ul>
+
+<ul class="navbar-nav ms-auto">
+
+							<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+
+								href="#" id="navbarDropdown" role="button"
+
+								data-bs-toggle="dropdown" aria-expanded="false">
+
+                						</a>
+
+								<div class="dropdown-menu">
+
+									<a class="dropdown-item" href="#">Editar Perfil</a> <a
+
+										class="dropdown-item" href="#">Cambiar Clave</a>
+
+								</div></li>
+
+							<li class="nav-item"><a class="nav-link"
+
+								href="index.php?pagina=false">Cerrar Sesion</a></li>
+
 						</ul>
 
-						<ul class="navbar-nav ms-auto">	
-							<li class="nav-item"><a class="nav-link"
-								href="index.php?sesion=false">Cerrar Sesion</a></li>
-						</ul>
+
 
 					</div>
 			

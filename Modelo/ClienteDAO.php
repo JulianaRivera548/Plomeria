@@ -9,7 +9,7 @@ class ClienteDAO{
     private $cedula;
     private $metodo_pago;
     
-    public function clienteDAO($id=0, $nombre="", $apellido="", $correo="", $clave="", $cedula="", $metodo_pago="",$telefono="") {
+    public function __construct($id=0, $nombre="", $apellido="", $correo="", $clave="", $cedula="", $metodo_pago="",$telefono="") {
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;

@@ -30,7 +30,7 @@ class Administrador{
         return $this->correo;
     }
     
-    public function Administrador($id="", $nombre="", $apellido="", $correo="", $clave=""){
+    public function __construct($id="", $nombre="", $apellido="", $correo="", $clave=""){
         $this -> id = $id;
         $this -> nombre = $nombre;
         $this -> apellido = $apellido;

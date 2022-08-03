@@ -12,7 +12,7 @@ class AdministradorDAO{
     private $clave;
     
     
-    public function AdministradorDAO($id , $nombre , $apellido , $correo, $clave)
+    public function __construct($id , $nombre , $apellido , $correo, $clave)
     {
         $this->id = $id;
         $this->nombre = $nombre;
@@ -35,8 +35,8 @@ class AdministradorDAO{
     }
     
     public function Consultar(){
-        return "select nombre, apellido, correo
-                from administrador
+        return "select Nombre, Apellido, Correo
+                from Administrador
                 where idAdministrador = '" . $this -> id . "'";
     }
     
