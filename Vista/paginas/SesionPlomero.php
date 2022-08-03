@@ -1,14 +1,17 @@
-<html>
-<head>
+<?php 
 
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	 crossorigin="anonymous">
+	if(!isset($_SESSION)){
+		session_start();
+	}
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" 
-crossorigin="anonymous"></script>
+	//$tipoServicio = ctrPlomero::mostrar1($_SESSION['idusu']);
 
-</head>
-
+    
+    if(!(isset($_SESSION['error']))){
+      $_SESSION['error'] = "";
+    }
+    
+?>
 
 	<div class="container-fluid" class="navbar " style="background-color: #e3f2fd;">
 	
@@ -26,16 +29,14 @@ crossorigin="anonymous"></script>
 					<div class="collapse navbar-collapse" id="navbarNav">
 						<ul class="navbar-nav ">
 						
-						<li class="nav-item dropdown"><a class="nav-link dropdown-toggle"
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle"
 								href="#" id="navbarDropdown" role="button"
 								data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="">Colsultar servicios</a></li>
+									<li><a class="dropdown-item" href="index.php?pagina=ConsultarServicio" action="index.php?pagina=ConsultarServicio.php" >Colsultar servicios</a></li>
 										<li><a class="dropdown-item" href="#">Consultar Clientes</a></li>
 								</ul></li>
-						
-						
-							
 						</ul>
 
 						<ul class="navbar-nav ms-auto">	
@@ -53,15 +54,18 @@ crossorigin="anonymous"></script>
 	<div class="row mt-3">
 		
 		<div class="col text-center">
-
+		<?php	
+            #foreach($tipoServicio as $key => $value){
+        ?>
 		<div class="card card text-dark bg-light">
-			<h5 class="card-header">Nombre Plomero</h5>
+			<h5 class="card-header"><?php/* echo $value['Nombre']*/?></h5>
 			<div class="card-body">
-				Correo
+			<?php /*echo $value['Correo']*/?>
 			</div>
 		</div>
+		<?php	
+            #}
+        ?>
 		</div>
 </div>
 </div>
-
-</html>

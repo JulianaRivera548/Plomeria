@@ -1,33 +1,21 @@
-<html >
-<head>
+<?php 
 
-<meta charset="UTF-8">
+	$tipoServicio = ctrPlomero::mostrar('plomero','servicio','cliente','detalle_servicio','id_plomero','Detalle_Servicio_idDetalle_Servicio',1);
 
-<link rel="stylesheet"
-	href="https://use.fontawesome.com/releases/v5.11.1/css/all.css" />
+    if(!isset($_SESSION)){
+		session_start();
+	}
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-	crossorigin="anonymous">
-
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-	crossorigin="anonymous"></script>
-	
-	
-
-	
-	
-
-</head>
+    if(!(isset($_SESSION['error']))){
+      $_SESSION['error'] = "";
+    }
+    
+?>
 
 <div class="container">
 	<div class="row mt-3">
 		<div class="col">
-			<div class="card">
+			<div class="card" >
 				<h5 class="card-header">Consultar Servcios</h5>
 				<div class="card-body">
 
@@ -36,8 +24,8 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Nombre Cliente</th>
 								<th>Valor visita</th>
+								<th>Nombre Cliente</th>
 								 <th >Detalles</th>
 								 <th >Informacion arreglo</th>
 								 <th >Autorizacion</th>
@@ -46,29 +34,35 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>$20.000</td>
+						<?php	
+              				foreach($tipoServicio as $key => $value){
+              			?>
+              				<tr>
+							  	
+              					<th scope="row"><?php echo $key+1 ?></th>
+              					<td><?php echo $value['Valor_Servicio']; ?></td>
+								<td><?php echo $value['Nombre']; ?></td>
+								
 								<td>
-								<button type="button" class="btn btn-dark">Ingresar codigo</button>
+									<form >
+									
+									<button name="<?php $value['Valor_Servicio']?>"  type="submit"   class="btn btn-dark"><a style="color: white"  href="index.php?pagina=Valoracion">Agregar</a></button></form>
+									<?php
+										$_SESSION['usuid']=$value['Valor_Servicio'];
+										$_SESSION['usunom']=$value['Nombre'];
+              						?>
 								</td>
 								
-							<td>
-								<button type="button" class="btn btn-dark">Agregar</button>
-								</td>
+								<td><?php echo $value['Descripcion']; ?></td>
 								<td>
-								<i class="fa fa-check" aria-hidden="true"></i>
-								<i class="fa fa-times" aria-hidden="true"></i>
-								
-
+									<i class="fa fa-check" aria-hidden="true">si</i>
+									<i class="fa fa-times" aria-hidden="true">no</i>
 								</td>
-								
-								
-							</tr>
-							<tr>
-						
-						</tbody>
+              				</tr>
+              				<?php }?>
+							
+							  <?php /* */?>
+            			</tbody>
 					</table>
 
 				</div>
@@ -81,4 +75,3 @@
 
 </div>
 
-</html>

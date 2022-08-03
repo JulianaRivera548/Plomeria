@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_POST['textAreaDetalle'] == "" || $_REQUEST['select'] == "Tipo de arreglo"){
-        $_SESSION['error'] = 'Por favor, llene los campos'
+        $_SESSION['error'] = 'Por favor, llene los campos';
         ?> <script>window.location.href = "index.php?pagina=AgregarPedido";</script> <?php
     }else{
         $_SESSION['error'] = '';

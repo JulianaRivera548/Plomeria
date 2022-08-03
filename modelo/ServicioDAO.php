@@ -36,14 +36,16 @@ class ServicioDAO {
         }
         $stmt->closeCursor();
         $stmt = null;
-        
-        
+
+        $fechaProv = "00-00-0000";
+        $idPlomero = 1;
+
         $stmt = $con->prepare("INSERT INTO servicio VALUES (:idServicio, :ValorServicio, :Fecha, :Cliente_idCliente, :Tipo_Servicio_idTipo_Servicio"
                 . ", :Direccion, :Factura_idFactura, :Factura_Cliente_idCliente, :Detalle_Servicio_idDetalle_Servicio, :Administrador_idAdministrador"
-                . ", :Estado_idEstado);");
+                . ", :Estado_idEstado, :idPlomero);");
         $stmt->bindParam(':idServicio', $this->servicio->getId());
         $stmt->bindParam(':ValorServicio', $this->servicio->getValorServicio());
-        $stmt->bindParam(':Fecha', $this->servicio->getFecha());
+        $stmt->bindParam(':Fecha', $fechaProv);
         $stmt->bindParam(':Cliente_idCliente', $this->servicio->getIdCliente());
         $stmt->bindParam(':Tipo_Servicio_idTipo_Servicio', $this->servicio->getIdTipoServicio());
         $stmt->bindParam(':Direccion', $this->servicio->getDireccion());
@@ -52,12 +54,20 @@ class ServicioDAO {
         $stmt->bindParam(':Detalle_Servicio_idDetalle_Servicio', $this->servicio->getDetalleServicio()->getId());
         $stmt->bindParam(':Administrador_idAdministrador', $this->servicio->getIdAdministrador());
         $stmt->bindParam(':Estado_idEstado', $this->servicio->getId());
+        $stmt->bindParam(':idPlomero', $idPlomero);
         $stmt->execute();
         
         $stmt->closeCursor();
         $stmt = null;        
         $con = null;
         
+    }
+    static public function actualizarEstado($idPedido){
+        $stmt = Conexion::conectar()->prepare("update servicio set Estado_idEstado = 2 where idServicio = $idPedido;");
+        $stmt->execute();
+        
+        $stmt->closeCursor();
+        $stmt = null;
     }
     
     

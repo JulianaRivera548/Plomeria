@@ -1,42 +1,53 @@
-<?php
-require_once 'Modelo/Plomero.php';
-$plomero = new Plomero();
-$plomero= $Plomero -> consultarTodos();
-?>
+
+
 <div class="container">
 	<div class="row mt-3">
 		<div class="col">
 			<div class="card">
-				<h5 class="card-header">Consultar Plomeros</h5>
-				<div class="card-body">					
+				<h5 class="card-header">Plomeros</h5>
+				<div class="card-body">
+
+
 					<table class="table table-striped table-hover">
 						<thead>
 							<tr>
 								<th>#</th>
 								<th>Nombre</th>
-								<th>Apellido</th>
-								<th>Correo</th>
-								<th>Estado</th>
-								<th></th>
+								<th>Certificados</th>
+								 <th >Servicios</th>
+								  <th >Estado</th>
+								 
+								 
+
 							</tr>
 						</thead>
 						<tbody>
-							<?php
-                            $pos = 1;
-                            foreach ($plomero as $plomeroactual) {
-                                echo "<tr>";
-                                echo "<td>" . $pos ++ . "</td>
-                                      <td>" . $plomeroActual -> getNombre() . "</td>
-                                      <td>" . $plomeroActual -> getApellido() . "</td>
-                                      <td>" . $plomeroActual -> getCorreo() . "</td
-                                 </td>";
-                                echo "</tr>";
-                            }
-                            ?>
+							<tr>
+								<th scope="row">1</th>
+								<td>Mark</td>
+								<td>3</td>
+								<td>Todos</td>
+								<td>
+								<i class="fa fa-check" aria-hidden="true"></i>
+								<i class="fa fa-times" aria-hidden="true"></i>
+								
+
+								</td>
+								
+								
+							</tr>
+							<tr>
+						
 						</tbody>
 					</table>
+
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+
+
 </div>
+
