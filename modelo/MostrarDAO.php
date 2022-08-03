@@ -22,7 +22,7 @@ class MostrarDAO{
         $stmt = null;
     }
     static public function mostrarDescripcionServicio($idCliente){
-        $stmt = Conexion::conectar()->prepare("Select cl.idCliente, ds.Descripcion, ser.Valor_Servicio, ds.Insumos, fac.Valor_Visita, fac.Valor_Total, ser.Estado_idEstado from detalle_servicio ds join servicio ser on (ser.Detalle_Servicio_idDetalle_Servicio = ds.idDetalle_Servicio) join cliente cl on (cl.idCliente = ser.Cliente_idCliente) join factura fac on (fac.idFactura = ser.Factura_idFactura) WHERE cl.idCliente = $idCliente;");
+        $stmt = Conexion::conectar()->prepare("Select cl.idCliente, ds.Descripcion, ser.Valor_Servicio, ds.Insumos, fac.Valor_Visita, fac.Valor_Total, ser.Estado_idEstado, ser.idServicio from detalle_servicio ds join servicio ser on (ser.Detalle_Servicio_idDetalle_Servicio = ds.idDetalle_Servicio) join cliente cl on (cl.idCliente = ser.Cliente_idCliente) join factura fac on (fac.idFactura = ser.Factura_idFactura) WHERE cl.idCliente = $idCliente;");
         $stmt->execute();
 
         return $stmt->fetchAll();
@@ -31,7 +31,7 @@ class MostrarDAO{
         $stmt = null;
     }
     static public function mostrarSerPlo($tabla,$tabla2,$tabla3,$tabla4,$id){
-        $stmt = Conexion::conectar()->prepare("SELECT cl.Nombre, se.idServicio ,cl.idCliente, se.Valor_Servicio,dt.idDetalle_Servicio ,dt.Descripcion FROM   $tabla2 se JOIN $tabla pl ON(se.id_plomero=$id) JOIN $tabla3 cl ON(cl.idCliente=se.Cliente_idCliente) JOIN $tabla4 dt ON(dt.idDetalle_Servicio = se.Detalle_Servicio_idDetalle_Servicio)");
+        $stmt = Conexion::conectar()->prepare("SELECT cl.Nombre, se.idServicio ,cl.idCliente, se.Valor_Servicio, dt.idDetalle_Servicio, dt.Descripcion FROM   $tabla2 se JOIN $tabla pl ON(se.id_plomero=$id) JOIN $tabla3 cl ON(cl.idCliente=se.Cliente_idCliente) JOIN $tabla4 dt ON(dt.idDetalle_Servicio = se.Detalle_Servicio_idDetalle_Servicio)");
         $stmt->execute();
         return $stmt->fetchAll();
         $stmt->close();

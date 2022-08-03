@@ -3,10 +3,15 @@
         session_start();
     }
     if(isset($_POST['aceptar'])) {
-        $_SESSION['aceptaServicio'] = true;
+        $_SESSION['ValorPagar'] = $_SESSION['ValTotal'];
+        ctrCliente::actualizarValor($_SESSION['idServicio'], $_SESSION['ValorPagar']);
+        echo '<script>window.location.href = "index.php?pagina=Pago"; </script>';
     }
     if(isset($_POST['rechazar'])) {
-        $_SESSION['aceptaServicio'] = false;
+        $_SESSION['ValorPagar'] = $_SESSION['ValVisita'];
+        ctrCliente::actualizarValor($_SESSION['idServicio'], $_SESSION['ValorPagar']);
+        echo '<script>window.location.href = "index.php?pagina=Pago"; </script>';
     }
-    echo "<script>window.location.href = 'index.php?pagina=SesionCliente'</script>";
+    echo $_GET['idServicio'];
+    //echo "<script>window.location.href = 'index.php?pagina=SesionCliente'</script>";
 ?>

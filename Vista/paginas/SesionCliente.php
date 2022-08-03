@@ -1,10 +1,12 @@
+  <?php if(isset($_SESSION["id"])){ ?>
     <?php
-
     $cliente = ctrCliente::mostrar('cliente'); 
-    $servicio = ctrCliente::mostrarDescripcionServicio($cliente[0]['idCliente']); 
+    $clientePos = $_SESSION["id"]-1;
+    $servicio = ctrCliente::mostrarDescripcionServicio($cliente[$clientePos]['idCliente']); 
+    echo $_SESSION['id'];
+    ?>
     
-    ?>  <!-- esto despues se quita por lo que está en el whatsapp para validar -->
-    
+
       <div class="container-fluid">
         <p style="text-align: left; display: inline;">
             Bienvenido 
@@ -12,8 +14,8 @@
                 if(!isset($_SESSION)){ 
                   session_start(); 
                 } 
-                $_SESSION['idCliente'] = $cliente[0]['idCliente'];
-                echo $cliente[0]['Nombre'] . " " . $cliente[0]['Apellido'];
+                $_SESSION['idCliente'] = $cliente[$clientePos]['idCliente'];
+                echo $cliente[$clientePos]['Nombre'] . " " . $cliente[$clientePos]['Apellido'];
             ?> 
         </p>
         <p style="float: right;">
@@ -45,28 +47,14 @@
       </div>
 
       <?php }else{ ?>
-          <?php if(!isset($_SESSION['aceptaServicio'])){ ?> <!-- poner esto que si el valor total de la base de datos es mayor a 0 -->
-          <div class="card-body" style="display: inline-flex;">
-            <div class="d-flex flex-column" style="width: 70vw;">
-              <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
-              <input type="text" value="valor a pagar: $<?php echo $row['Valor_Total']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
-            </div>
-            <div style="align-self: center; width: 20vw;">
-              <form action="index.php?pagina=Confirmacion" method="POST" style="text-align: center;">
-                  <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar" />
-                  <input type="submit" name="rechazar" class="btn btn-light" value="Rechazar" />
-              </form>
-            </div>
-
-
-          <?php }else{ ?>
+          
+          
             
             <?php if($row['Estado_idEstado'] == 2){ ?>
-              <?php if($_SESSION['aceptaServicio']){ ?>
+              <?php if($row['Valor_Servicio'] > 10000){ ?>
                 <div class="d-flex flex-column" style="width: 70vw;">
                   <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
                   <input type="text" value="valor a pagar: $<?php echo $row['Valor_Total']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
-                  <?php $_SESSION['ValorPagar'] = $row['Valor_Total']; ?>
                 </div>
                 </div>
                 <div class="card">
@@ -81,10 +69,6 @@
                 <div class="d-flex flex-column" style="width: 70vw;">
                     <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
                     <input type="text" value="valor a pagar: $<?php echo $row['Valor_Visita']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
-                    <?php $_SESSION['ValorPagar'] = $row['Valor_Visita']; ?>
-                  </div>
-                  <div style="align-self: center; width: 20vw;">
-                    <center><button type="button" class="btn btn-dark" style="text-align: center;" >Pagar</button></center>
                   </div>
                 </div>
                 <div class="card">
@@ -92,17 +76,29 @@
                     Se ha completado el proceso.
                   </div>
                 </div>
-                <?php $_SESSION['aceptaServicio'] = null;  ?>
+                
               <?php 
                 } 
                 
               ?>
             <?php }else{ $_SESSION['idServicio'] = $row['idServicio']; ?>
+              <?php $_SESSION['ValTotal'] = $row['Valor_Total']; ?>
+              <?php $_SESSION['ValVisita'] = $row['Valor_Visita']; ?>
+              <div class="card-body" style="display: inline-flex;">
+                <div class="d-flex flex-column" style="width: 70vw;">
+                  <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
+                  <input type="text" value="valor a pagar: $<?php echo $row['Valor_Total']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
+                </div>
+                <div style="align-self: center; width: 20vw;">
+                  <form action="index.php?pagina=Confirmacion" method="POST" style="text-align: center;">
+                      <input type="submit" name="aceptar" class="btn btn-dark" value="Aceptar" />
+                      <input type="submit" name="rechazar" class="btn btn-light" value="Rechazar" />
+                  </form>
+                </div>
 
-              <script>window.location.href = "index.php?pagina=Pago"; </script>
+              <!-- <script>window.location.href = "index.php?pagina=Pago"; </script> -->
             <?php } ?>
-          <?php } ?>
-      <?php } ?>
+        <?php } ?>
 
     </div>
     <br>
@@ -114,3 +110,12 @@
         </a>
       </div>
     </div>
+  <?php 
+    }else{
+      echo '<div class="card">
+              <div class="card-body">
+                <h4>Por favor logueese para hacer un pedido</h4>
+              </div>
+            </div>';
+    }
+  ?>

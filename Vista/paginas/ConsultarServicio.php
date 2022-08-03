@@ -44,13 +44,11 @@
 								<td><?php echo $value['Nombre']; ?></td>
 								
 								<td>
-									<form >
-									
-									<button name="<?php $value['Valor_Servicio']?>"  type="submit"   class="btn btn-dark"><a style="color: white"  href="index.php?pagina=Valoracion">Agregar</a></button></form>
-									<?php
-										$_SESSION['usuid']=$value['Valor_Servicio'];
-										$_SESSION['usunom']=$value['Nombre'];
-              						?>
+									<form action="index.php?pagina=Valor&idServicio=<?php echo $idServicio ?>" method="POST" name="form">
+										<?php $idServicio = $value['idServicio']; ?>
+										<button name="<?php echo $value['idServicio']?>" type="submit" class="btn btn-dark">Agregar
+										</button>
+									</form>
 								</td>
 								
 								<td><?php echo $value['Descripcion']; ?></td>

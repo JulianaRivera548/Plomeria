@@ -4,7 +4,6 @@
         session_start();
     }
     ctrCliente::actualizarEstado($_SESSION['idServicio']);
-    $_SESSION['aceptaServicio'] = null;
 
     $pag = $_REQUEST['selectEF'];
     if($_REQUEST['selectEF'] == 'efectivo'){

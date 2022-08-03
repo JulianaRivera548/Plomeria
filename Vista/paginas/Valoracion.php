@@ -26,7 +26,7 @@
 										if(!isset($_SESSION)){
 											session_start();
 										}
-										echo $_SESSION['usuid'];
+										echo $_SESSION['serid'];
 									 ?></th>
 								<td><?php
 								echo $_SESSION['usunom'];

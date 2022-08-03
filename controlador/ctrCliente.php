@@ -25,6 +25,19 @@ class ctrCliente{
         $servicio->insertarServicio($idCliente, $detallesServicio);
         
     }
+    
+    static public function actualizarEstado($idPedido){
+        
+        ServicioDAO::actualizarEstado($idPedido);
+
+    }
+
+    static public function actualizarValor($idServicio, $valor){
+        
+        ServicioDAO::actualizarValor($idServicio, $valor);
+
+    }
+    
 
 }
 
