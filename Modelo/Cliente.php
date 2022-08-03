@@ -117,11 +117,5 @@ class Cliente{
         return $resultado[0];
     }
     
-    
-    
-    
-    
-
-    
 }
 ?>
