@@ -26,8 +26,10 @@ echo '<script>
     		</script>';
 
     }else {
-  echo '<script> alert("Usuario no existe");
-        </script>';
+        echo '<script>
+                 alert("Usuario no existe");
+                 window.location.href = "../index.php?pagina=Ingreso";
+              </script>';
  
 }
 }

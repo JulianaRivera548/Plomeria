@@ -21,19 +21,16 @@ class ctrPlomero{
 
         return $resp;
     }
-    static public function Actuali_Plo($ids){
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        $resp = MostrarDAO::Actualizar_Dat($_SESSION['ValorRep'],$ids);
+    static public function Actuali_Plo(){
+      
+        $resp = MostrarDAO::Actualizar_Dat();
         
         
     }
-    static public function Actuali_Plo2($ids){
-        if(!isset($_SESSION)){
-            session_start();
-        }
-        $resp = MostrarDAO::Actualizar_Dat2($_SESSION['DetallePlo'],$ids);
+    static public function Actuali_Plo2(){
+        
+
+        $resp = MostrarDAO::Actualizar_Dat2();
         
     }
     

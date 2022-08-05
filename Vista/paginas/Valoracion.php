@@ -23,29 +23,29 @@
 							<tr>
 								<th scope="row">
 									<?php 
-										if(!isset($_SESSION)){
-											session_start();
-										}
-										echo $_SESSION['serid'];
+									if(!isset($_SESSION))
+										session_start();
+										echo $_SESSION['usuid'];
 									 ?></th>
 								<td><?php
-								echo $_SESSION['usunom'];
-								$tipoServicio = ctrPlomero::mostrarTotalDatos($_SESSION['usuid'],'servicio','tipo_servicio','cliente');
-    							if(!(isset($_SESSION['error']))){
-      								$_SESSION['error'] = "";
-    							}
-    							
+								
+									$tipoServicio = ctrPlomero::mostrarTotalDatos($_SESSION['usuid'],'servicio','tipo_servicio','cliente');
+									if(!(isset($_SESSION['error']))){
+										$_SESSION['error'] = "";
+									}
+									foreach($tipoServicio as $key => $value){
+									echo $value['Nombre'];
 								?>
 								</td>
-								<td><?php foreach($tipoServicio as $key => $value){ 
-									echo $value['Tipo_Servicio'];
-								}?></td>
-								<td><?php foreach($tipoServicio3 as $key => $value){ 
-									echo $value['Direccion'];
-								}?></td></td>
-								<td><?php foreach($tipoServicio2 as $key => $value){ 
-									echo $value['Telefono'];
-								}?></td>
+								<td>
+								<?php echo $value['Tipo_Servicio'];?>
+								</td>
+								<td>
+								<?php echo $value['Direccion']; ?>
+								</td></td>
+								<td>
+								<?php  echo $value['Telefono']; }?>
+								</td>
 								
 							
 							</tr>

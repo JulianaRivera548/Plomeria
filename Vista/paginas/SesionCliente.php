@@ -1,9 +1,7 @@
   <?php if(isset($_SESSION["id"])){ ?>
     <?php
-    $cliente = ctrCliente::mostrar('cliente'); 
-    $clientePos = $_SESSION["id"]-1;
-    $servicio = ctrCliente::mostrarDescripcionServicio($cliente[$clientePos]['idCliente']); 
-    echo $_SESSION['id'];
+    $cliente = ctrCliente::mostrar('cliente');
+    $servicio = ctrCliente::mostrarDescripcionServicio($_SESSION["id"]); 
     ?>
     
 
@@ -14,8 +12,12 @@
                 if(!isset($_SESSION)){ 
                   session_start(); 
                 } 
-                $_SESSION['idCliente'] = $cliente[$clientePos]['idCliente'];
-                echo $cliente[$clientePos]['Nombre'] . " " . $cliente[$clientePos]['Apellido'];
+                foreach($cliente as $row){
+                  if($row['idCliente'] == $_SESSION["id"]){
+                    $_SESSION['idCliente'] = $row['idCliente'];
+                    echo $row['Nombre'] . " " . $row['Apellido'];
+                  }
+                }
             ?> 
         </p>
         <p style="float: right;">

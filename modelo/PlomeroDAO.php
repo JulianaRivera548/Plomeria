@@ -3,7 +3,7 @@ class PlomeroDAO{
 
     private $Plomero;
     public function __construct($Plomero) {
-        $this->plomero = $PlomeroP
+        $this->plomero = $PlomeroP;
     }
     
     public function crear(){

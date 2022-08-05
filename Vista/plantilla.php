@@ -13,12 +13,10 @@
 
 
   <?php 
-    if(isset($_GET["pagina"])){
+    if(isset($_GET["pagina"]))
         include "Vista/paginas/".$_GET["pagina"].".php";
-    }else
-    if (isset($_GET["pagina"]) == "false") {
-      echo '<script> "Tiene que iniciar sesion de nuevo" </scrip>';
-  }
+    else
+      echo '<script> window.location.href = "index.php?pagina=Ingreso" </script>';
   
   ?>
 	

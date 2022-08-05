@@ -1,6 +1,7 @@
 <?php 
 
-	$tipoServicio = ctrPlomero::mostrar('plomero','servicio','cliente','detalle_servicio','id_plomero','Detalle_Servicio_idDetalle_Servicio',1);
+	//$tipoServicio = ctrPlomero::mostrar('plomero','servicio','cliente','detalle_servicio','id_plomero','Detalle_Servicio_idDetalle_Servicio',1);
+	$tipoServicio = ctrPlomero::mostrar('plomero','servicio','cliente','detalle_servicio',1);
 
     if(!isset($_SESSION)){
 		session_start();
@@ -59,7 +60,7 @@
               				</tr>
               				<?php }?>
 							
-							  <?php /* */?>
+							  
             			</tbody>
 					</table>
 

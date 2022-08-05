@@ -8,8 +8,8 @@
         $_SESSION['error2'] = '';
         $_SESSION['DetallePlo']=$_POST['DetallePlo'];
         $_SESSION['ValorRep']=$_POST['ValorRep'];
-        $tiposervicio =ctrPlomero::Actuali_Plo($_SESSION['usuid']);
-        $tiposervicio2 =ctrPlomero::Actuali_Plo2($_SESSION['usuid']);
+        $tiposervicio =ctrPlomero::Actuali_Plo();
+        $tiposervicio2 =ctrPlomero::Actuali_Plo2();
         ?> <script>window.location.href = "index.php?pagina=DetallesServicio";</script> <?php
     }
 ?>
