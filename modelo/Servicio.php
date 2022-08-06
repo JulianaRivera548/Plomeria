@@ -35,6 +35,12 @@ class Servicio {
         $this->idTipoServicio = $idTipoServicio;
         $this->direccion = $direccion;
         $this->Factura = $Factura;
+        if($valorServicio != 10000){
+            $this->Factura->setValor_total($valorServicio);
+        }
+        else{
+            $this->Factura->setValor_total(0);
+        }
         $this->valorServicio = $valorServicio;
         $this->DetalleServicio = $DetalleServicio;
         $this->idAdministrador = $idAdministrador;
