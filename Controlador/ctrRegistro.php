@@ -9,7 +9,9 @@ if(isset($_POST["crear"])){
     if(!$Cliente -> existeCorreo() && !$Administrador -> existeCorreo()){
         $id = $Cliente -> crear();
     }else{
-        echo '<script> alert("Este correo ya existe");
+        echo '<script> 
+            alert("Este correo ya existe");
+            window.location.href = "../index.php?pagina=Registro";
         </script>';
         
     }

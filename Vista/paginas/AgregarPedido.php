@@ -1,6 +1,11 @@
     <?php 
     $tipoServicio = ctrCliente::mostrar('tipo_servicio'); 
-    session_start();
+    if(!isset($_SESSION)){ 
+      session_start(); 
+    } 
+    if(!isset($_SESSION['error'])){ 
+      $_SESSION['error'] = ""; 
+    } 
     //echo $_SESSION['idCliente'];
     ?>
 
@@ -22,7 +27,7 @@
               <?php } ?>
             </select>
             <div style="align-self: center; width: 20vw; padding: 20px;">
-              <center><button type="submit" class="btn btn-dark" style="text-align: center;" onclick="enviar();">enviar</button></center>
+              <center><button type="submit" class="btn btn-dark" style="text-align: center;">enviar</button></center>
             </div>
           </form>
 
@@ -66,15 +71,11 @@
         </div>
         
     </div>
+    
+    <label ><?php if(isset($_SESSION['prueba'])) echo $_SESSION['prueba']; ?></label>
 
-    <script>
-      function enviar(){
-        if(document.getElementById("textArea").value == "" || document.getElementById("tipos").selectedIndex == 0){
-          document.getElementById("error").innerText = "Por favor, llene los campos";
-        }else{
-          
-
-          window.location.href = "index.php?pagina=prueba";
-        }
-      }
-    </script>
+    <form method="POST" action="index.php?pagina=ValidarPrueba">
+        <input type="submit" name="button1" value="Button1"/>
+        <input type="submit" name="button2" value="Button2"/>
+    </form>
+    

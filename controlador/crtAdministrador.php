@@ -1,11 +1,16 @@
 <?php
-include_once 'modelo/Administrador.php';
-if(!isset($_SESSION)) { 
-session_start; 
+include_once "modelo/MostrarDAO.php";
+include_once "modelo/Fecha.php";
+class crtAdministrador{
+
+    static public function mostrar($tabla){
+        
+        $resp = MostrarDAO::mostrar($tabla);
+echo MostrarDAO::mostrar($tabla);
+        return $resp;
+    }
+
+
+
 }
-
-
-$Administrador = new Administrador($_SESSION["id"]);  
-$Administrador->Consultar();
-$_SESSION["nombre"]=$Administrador->getNombre();
-$_SESSION["apellido"]=$Administrador->getApellido();
+?>

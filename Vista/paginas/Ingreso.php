@@ -7,8 +7,7 @@
 			<div class="card card text-dark bg-light">
 				<h5 class="card-header bg-primary text-white">Iniciar Sesion</h5>
 				<div class="card-body">
-					<form method="post"
-						action="Controlador/ctrLogin.php">
+					<form method="post" action="Controlador/ctrLogin.php">
 						<div class="mb-3">
 
 							<input type="email" class="form-control" name="Correo"

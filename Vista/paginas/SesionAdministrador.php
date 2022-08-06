@@ -1,13 +1,36 @@
 <?php
+if(!isset($_SESSION["id"])){?>
 
 
-if(!isset($_SESSION)) { 
-	session_start; 
-	}
+	<?php
+    $administrador = crtAdministrador::mostrar('administrador');
+	echo   $administrador = crtAdministrador::mostrar('administrador');
+    //$servicio = crtAdministrador::mostrarDescripcionServicio($_SESSION["id"]); 
+    ?>
 
 
-
-?>
+<div class="container-fluid">
+        <p style="text-align: left; display: inline;">
+            Bienvenido 
+            <?php
+                if(!isset($_SESSION)){ 
+                  session_start(); 
+                } 
+                foreach($administrador as $row){
+                  if($row['idAdministrador'] == $_SESSION["id"]){
+                    $_SESSION['idAdministrador'] = $row['idAdministrador'];
+                    echo $row['Nombre'] . " " . $row['Apellido'];
+                  }
+                }
+            ?> 
+        </p>
+        <p style="float: right;">
+            <?php
+                $fecha = new Fecha();
+                echo $fecha->getFecha() . " - " . $fecha->getHora();
+            ?>
+        </p>
+      </div>
 
 <div class="container-fluid" class="navbar " style="background-color: #e3eeff;">
 	
@@ -38,13 +61,6 @@ if(!isset($_SESSION)) {
 		</ul>
 
 						
-						<ul class="navbar-nav ms-auto">
-
-
-
-
-
-</ul>
 
 <ul class="navbar-nav ms-auto">
 
@@ -76,6 +92,18 @@ if(!isset($_SESSION)) {
 			
 			</nav>
 				</div>
+
+
+
+				<?php 
+    }else{
+      echo '<div class="card">
+              <div class="card-body">
+                <h4>Por favor logueese </h4>
+              </div>
+            </div>';
+    }
+  ?>
 				
 				
 				
