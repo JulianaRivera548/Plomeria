@@ -6,7 +6,6 @@ class crtAdministrador{
     static public function mostrar($tabla){
         
         $resp = MostrarDAO::mostrar($tabla);
-echo MostrarDAO::mostrar($tabla);
         return $resp;
     }
 
