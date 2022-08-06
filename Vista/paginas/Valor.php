@@ -5,7 +5,7 @@
         session_start();
     }
     
-    $_SESSION['usuid'] = $_GET['idServicio']+1;
+    $_SESSION['usuid'] = $_GET['idServicio'];
     
     if(!isset($_SESSION['idServicio'])){
         $_SESSION['error2'] = 'Error';

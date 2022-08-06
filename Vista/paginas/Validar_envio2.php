@@ -1,17 +1,19 @@
 <?php
-    
-    session_start();
-    if($_POST['Repuestos'] == "" || $_POST['Garantia'] == ""){
-        $_SESSION['error3'] = 'Por favor, llene los campos';
+/*
+    if(!isset($_SESSION)){ 
+        session_start(); 
+    } 
+
+    if(!isset($_SESSION['DetallePlo'])){
+        $_SESSION['act_boton'] = 'in activo';
+
+
         ?> <script>window.location.href = "index.php?pagina=Valoracion";</script> <?php
     }else{
-        $_SESSION['error3'] = '';
-        $_SESSION['Garantia']=$_POST['DetallePlo'];
-        $_SESSION['Insumos']=$_POST['Insumos'];
-        $_SESSION['Fecha']=$_POST['Fecha'];
-        $tiposervicio =ctrPlomero::Actuali_Plo($_SESSION['Garantia']);
-        $tiposervicio2 =ctrPlomero::Actuali_Plo2($_SESSION['Insumos']);
-        $tiposervicio2 =ctrPlomero::Actuali_Plo2($_SESSION['Fecha']);
-        ?> <script>window.location.href = "index.php?pagina=SesionPlomero";</script> <?php
+        $_SESSION['act_boton'] = 'activo';
+
+        $tiposervicio =ctrPlomero::Actuali_Plo($_SESSION['DetallePlo'],$_SESSION['Garantia'],$_SESSION['Insumos'],$_SESSION['Repuestos']);
+        ?> <script>window.location.href = "index.php?pagina=ConsultarServicios";</script> <?php
     }
+*/
 ?>

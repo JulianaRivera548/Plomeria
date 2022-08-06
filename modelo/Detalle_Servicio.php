@@ -14,6 +14,26 @@ class Detalle_Servicio {
         $this->garantia = "";
         $this->insumos = "";
     }
+
+    function obtenerDatos($id, $repuestos, $descripcion, $garantia, $insumos){
+        $this->id = $id;
+        $this->repuestos = $repuestos;
+        $this->descripcion = $descripcion;
+        $this->garantia = $garantia;
+        $this->insumos = $insumos;
+    }
+
+    function insertarDatos($res){
+        $this->id = $res['idDetalle_Servicio'];
+        $this->repuestos = $res['Repuestos'];
+        $this->descripcion = $res['Descripcion'];
+        $this->garantia = $res['Garantia'];
+        $this->insumos = $res['Insumos'];
+    }
+    
+    function toString(){
+        return "\n\nDescripción: ".$this->descripcion."\nRepuestos: ".$this->repuestos."\nGarantia: ".$this->garantia."\nInsumos: ".$this->insumos."\n\nCon estos detalles se estima su precio";
+    }
     
     
     function getId() {

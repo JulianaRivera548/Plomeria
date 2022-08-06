@@ -2,6 +2,7 @@
     <?php
     $cliente = ctrCliente::mostrar('cliente');
     $servicio = ctrCliente::mostrarDescripcionServicio($_SESSION["id"]); 
+    
     ?>
     
 
@@ -32,7 +33,7 @@
     <?php foreach($servicio as $row){ ?>
     <div class="card">
 
-      <?php if($row['Insumos'] == ""){ ?>
+      <?php if($row['Valor_Total'] == 0 || $row['Insumos'] == ""){ ?>
         <div class="card-body" style="display: inline-flex;">
           <div class="d-flex flex-column" style="width: 70vw;">
             <textarea readonly cols="130" rows="5" placeholder="<?php echo $row['Descripcion']; ?>"></textarea>
@@ -42,11 +43,19 @@
             <center><button type="button" class="btn btn-dark" style="text-align: center;" disabled>Pagar</button></center>
           </div>
         </div>
-      <div class="card">
-        <div class="card-body">
-          Prontamente se le agendará una cita para la visita del plomero.
-        </div>
-      </div>
+        <?php if($row['Fecha_Visita'] == "00-00-0000"){ ?>
+          <div class="card">
+            <div class="card-body">
+              Prontamente se le agendará una cita para la visita del plomero.
+            </div>
+          </div>
+        <?php }else{ ?>
+          <div class="card">
+            <div class="card-body">
+              La visita del plomero está asignada para el día <?php echo $row['Fecha_Visita']; ?>
+            </div>
+          </div>
+        <?php } ?>
 
       <?php }else{ ?>
           
@@ -54,25 +63,37 @@
             
             <?php if($row['Estado_idEstado'] == 2){ ?>
               <?php if($row['Valor_Servicio'] > 10000){ ?>
+              <div class="card-body" style="display: inline-flex;">
                 <div class="d-flex flex-column" style="width: 70vw;">
-                  <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
-                  <input type="text" value="valor a pagar: $<?php echo $row['Valor_Total']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
+                  <textarea readonly cols="130" rows="10" placeholder="El plomero detalló lo siguiente: <?php echo ctrCliente::mostrarDetalles($row['idServicio']); ?>" ></textarea>
+                  <input type="text" value="valor a pagar: $0" style="text-align: center; color: white;" class="bg-dark" disabled>
                 </div>
-                </div>
-                <div class="card">
-                  <div class="card-body">
-                    Prontamente se le agendará una cita para arreglar su problema.
+              </div>
+                <?php if($row['Fecha_Accion'] == "00-00-0000"){ ?>
+                  <div class="card">
+                    <div class="card-body">
+                      Prontamente se le agendará una cita para arreglar su problema.
+                    </div>
                   </div>
-                </div>
-
+                <?php }else{ ?>
+                  <div class="card">
+                    <div class="card-body">
+                      Su cita se agendó para el día <?php echo $row['Fecha_Accion'] ?>
+                    </div>
+                  </div>
+                <?php } ?>
               <?php 
                 }else{
               ?>
+              <div class="card-body" style="display: inline-flex;">
                 <div class="d-flex flex-column" style="width: 70vw;">
-                    <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
-                    <input type="text" value="valor a pagar: $<?php echo $row['Valor_Visita']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
-                  </div>
+                  <textarea readonly cols="130" rows="10" placeholder="El plomero detalló lo siguiente: <?php echo ctrCliente::mostrarDetalles($row['idServicio']); ?>" ></textarea>
+                  <input type="text" value="valor a pagar: $0" style="text-align: center; color: white;" class="bg-dark" disabled>
                 </div>
+                <div style="align-self: center; width: 20vw;">
+                  <center><button type="button" class="btn btn-dark" style="text-align: center;" onclick="window.open('index.php?pagina=FacturaPDF&id=<?php echo $row['idServicio'] ?>');">Generar factura en PDF</button></center>
+                </div>
+              </div>
                 <div class="card">
                   <div class="card-body">
                     Se ha completado el proceso.
@@ -88,7 +109,7 @@
               <?php $_SESSION['ValVisita'] = $row['Valor_Visita']; ?>
               <div class="card-body" style="display: inline-flex;">
                 <div class="d-flex flex-column" style="width: 70vw;">
-                  <textarea readonly cols="130" rows="5" placeholder="El plomero detalló lo siguiente: <?php echo $row['Descripcion']; ?>"></textarea>
+                  <textarea readonly cols="130" rows="10" placeholder="El plomero detalló lo siguiente: <?php echo ctrCliente::mostrarDetalles($row['idServicio']); ?>" ></textarea>
                   <input type="text" value="valor a pagar: $<?php echo $row['Valor_Total']; ?>" style="text-align: center; color: white;" class="bg-dark" disabled>
                 </div>
                 <div style="align-self: center; width: 20vw;">

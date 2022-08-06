@@ -73,7 +73,27 @@ class Detalle_ServicioDAO {
         $stmt = null;
         $con = null;
     }
+
+    static public function consultarDetalleServicio($idServicio){
+        $con = Conexion::conectar();
+        $stmt = $con->prepare("select ds.* from detalle_servicio ds join servicio ser on (ds.idDetalle_Servicio = ser.Detalle_Servicio_idDetalle_Servicio) where ser.idServicio = $idServicio;");
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+        $detalleServicio = new Detalle_Servicio("");
+        $detalleServicio->insertarDatos($res[0]);
+        return $detalleServicio;
+    }
     
+    function obtenerDatos($idServicio){
+        $con = Conexion::conectar();
+        $stmt = $con->prepare("SELECT ds.* FROM detalle_servicio ds join servicio se on (ds.idDetalle_Servicio = se.Detalle_Servicio_idDetalle_Servicio) WHERE se.idServicio = $idServicio;");
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+
+        $this->detalleServicio = new Detalle_Servicio("");
+        $this->detalleServicio->obtenerDatos($res[0]['idDetalle_Servicio'], $res[0]['Repuestos'], $res[0]['Descripcion'], $res[0]['Garantia'], $res[0]['Insumos']);
+        return $this->detalleServicio;
+    }
     
     
     

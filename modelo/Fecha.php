@@ -16,6 +16,20 @@ class Fecha{
         $this->hora = date("H:i");
     }
 
+    function fechaVacia(){
+        $this->dia = "00";
+        $this->mes = "00";
+        $this->año = "0000";
+        $this->fecha = $this->dia."-".$this->mes."-".$this->año;
+        echo $this->fecha;
+        return $this->fecha;
+    }
+
+    function horaVacia(){
+        $this->hora = "00:00";
+        return $this->hora;
+    }
+
     function getHora() {
         return $this->hora;
     }

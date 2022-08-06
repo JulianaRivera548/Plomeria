@@ -72,10 +72,3 @@
         
     </div>
     
-    <label ><?php if(isset($_SESSION['prueba'])) echo $_SESSION['prueba']; ?></label>
-
-    <form method="POST" action="index.php?pagina=ValidarPrueba">
-        <input type="submit" name="button1" value="Button1"/>
-        <input type="submit" name="button2" value="Button2"/>
-    </form>
-    

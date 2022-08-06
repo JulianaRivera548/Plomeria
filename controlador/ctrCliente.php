@@ -37,6 +37,16 @@ class ctrCliente{
         ServicioDAO::actualizarValor($idServicio, $valor);
 
     }
+
+    static public function mostrarDetalles($idServicio){
+
+        $detalle = Detalle_ServicioDAO::consultarDetalleServicio($idServicio);
+        //echo var_dump($detalle);
+        return $detalle->toString();
+
+    }
+
+    
     
 
 }

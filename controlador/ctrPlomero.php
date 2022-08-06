@@ -9,9 +9,9 @@ class ctrPlomero{
         $resp = MostrarDAO::mostrar1d($id);
         return $resp;
     }
-    static public function mostrar($tabla,$tabla2,$tabla3,$tabla4,$id){
+    static public function mostrar($tabla,$tabla2,$tabla3,$tabla4,$tabla5,$id){
         
-        $resp = MostrarDAO::mostrarSerPlo($tabla,$tabla2,$tabla3,$tabla4,$id);
+        $resp = MostrarDAO::mostrarSerPlo($tabla,$tabla2,$tabla3,$tabla4,$tabla5,$id);
 
         return $resp;
     }
@@ -21,19 +21,18 @@ class ctrPlomero{
 
         return $resp;
     }
-    static public function Actuali_Plo(){
-      
-        $resp = MostrarDAO::Actualizar_Dat();
-        
-        
-    }
-    static public function Actuali_Plo2(){
+    static public function Actuali_Plo($val1,$val2,$val3,$val4){
         
 
-        $resp = MostrarDAO::Actualizar_Dat2();
+        $resp = MostrarDAO::Actualizar_Dat($val1,$val2,$val3,$val4);
         
     }
-    
+    static public function mostraractivacion($val){
+        
+
+        $resp = MostrarDAO::mostraract($val);
+        return $resp;
+    }
 }
 
 
