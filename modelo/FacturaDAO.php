@@ -34,7 +34,7 @@ class FacturaDAO {
         $stmt->bindParam(':id', $this->factura->getId());
         $stmt->bindParam(':valorVisita', $this->factura->getValor_visita());
         $stmt->bindParam(':valorTotal', $this->factura->getValor_total());
-        $stmt->bindParam(':fecha', $this->factura->getFecha());
+        $stmt->bindParam(':fecha', $this->factura->getFecha()->fechaVacia());
         $stmt->bindParam(':hora', $this->factura->getHora());
         $stmt->bindParam(':idCliente', $this->factura->getId_cliente());
         $stmt->execute();
@@ -59,6 +59,17 @@ class FacturaDAO {
         $stmt->closeCursor();
         $stmt = null;
         $con = null;
+    }
+
+    function obtenerDatosFactura($idServicio){
+        $con = Conexion::conectar();
+        $stmt = $con->prepare("SELECT fa.* FROM factura fa join servicio se on (fa.idFactura = se.Factura_idFactura) WHERE se.idServicio = $idServicio;");
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+
+        $this->factura = new Factura(0);
+        $this->factura->obtenerDatos($res[0]['idFactura'], $res[0]['Valor_Total'], $res[0]['Valor_Visita'], $res[0]['Fecha']);
+        return $this->factura;
     }
             
 

@@ -11,6 +11,7 @@ class Servicio {
     private $DetalleServicio;
     private $idAdministrador;
     private $estado;
+    private $plomero;
     
     function __construct($idTipoServicio, $idAdministrador) {
         $this->id = 0;
@@ -24,6 +25,20 @@ class Servicio {
         $this->DetalleServicio = NULL;
         $this->idAdministrador = $idAdministrador;
         $this->estado = 1;
+        $this->plomero = "";
+    }
+
+    function obtenerDatos($id, $fecha, $idCliente, $idTipoServicio, $direccion, $Factura, $valorServicio, $DetalleServicio, $idAdministrador, $estado){
+        $this->id = $id;
+        $this->fecha = $fecha;
+        $this->idCliente = $idCliente;
+        $this->idTipoServicio = $idTipoServicio;
+        $this->direccion = $direccion;
+        $this->Factura = $Factura;
+        $this->valorServicio = $valorServicio;
+        $this->DetalleServicio = $DetalleServicio;
+        $this->idAdministrador = $idAdministrador;
+        $this->estado = $estado;
     }
 
     

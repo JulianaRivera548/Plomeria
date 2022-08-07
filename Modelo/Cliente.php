@@ -116,6 +116,16 @@ class Cliente{
         $this -> Conexion -> cerrar();
         return $resultado[0];
     }
+
+    static public function obtenerDatosServicio($idServicio){
+        $con = Conexion::conectar();
+        $stmt = $con->prepare("SELECT cl.* FROM cliente cl JOIN servicio ser on(cl.idCliente = ser.Cliente_idCliente) WHERE idServicio = $idServicio");
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+
+        $cliente = new Cliente($res[0]['idCliente'], $res[0]['Nombre'], $res[0]['Apellido'], $res[0]['Correo'], $res[0]['Clave'], $res[0]['Cedula'], $res[0]['Metodo_pago_idMetodo_pago'], $res[0]['Telefono']);
+        return $cliente;
+    }
     
 }
 ?>

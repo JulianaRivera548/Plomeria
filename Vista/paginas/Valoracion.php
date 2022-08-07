@@ -76,18 +76,16 @@
     			</div>
 					<form action="index.php?pagina=Validar_envio" method="POST">
 						<div class="form-group">
-							<label for="exampleFormControlTextarea1">Informacion y severidad
-								del arreglo</label>
-							<textarea name="DetallePlo" class="form-control" id="exampleFormControlTextarea1"
-								rows="3"></textarea>
-								
+							<label for="exampleFormControlTextarea1">Informacion y severidad del arreglo</label>
+							<textarea name="DetallePlo" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<label for="exampleFormControlTextarea1">Garantia</label>
+							<textarea name="Garantia" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<label for="exampleFormControlTextarea1">Insumos</label>
+							<textarea name="Insumos" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+							<label for="exampleFormControlTextarea1">Repuestos</label>
+							<textarea name="Repuestos" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
 						</div>
-
-						<div  class="form-group">
-							<label for="exampleFormControlTextarea1">Valor reparacion</label>
-							<textarea name="ValorRep" class="form-control" id="exampleFormControlTextarea1"
-								rows="3"></textarea>
-						</div>
+						
 						<button type="submit" class="btn btn-dark">Aceptar</button>
 					</form>	
 				</div>

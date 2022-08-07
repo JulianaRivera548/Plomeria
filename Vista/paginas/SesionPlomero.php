@@ -34,7 +34,7 @@
 								href="#" id="navbarDropdown" role="button"
 								data-bs-toggle="dropdown" aria-expanded="false">Servicios</a>
 								<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<li><a class="dropdown-item" href="index.php?pagina=ConsultarServicio" action="index.php?pagina=ConsultarServicio.php" >Colsultar servicios</a></li>
+									<li><a class="dropdown-item" href="index.php?pagina=ConsultarServicioPlomero" action="index.php?pagina=ConsultarServicio.php" >Colsultar servicios</a></li>
 										<li><a class="dropdown-item" href="#">Consultar Clientes</a></li>
 								</ul></li>
 						</ul>

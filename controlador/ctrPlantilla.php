@@ -9,7 +9,10 @@ class ctrPlantilla{
         include_once "modelo/Servicio.php";
         include_once "modelo/ServicioDAO.php";
         include_once "modelo/Administrador.php";
-        //include_once "modelo/.php";
+        include_once "modelo/ClienteDAO.php";
+        include_once "modelo/Plomero.php";
+        include_once "modelo/Certificado.php";
+         //include_once "modelo/.php";
         include "Vista/plantilla.php";
     }
 }

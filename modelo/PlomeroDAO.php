@@ -1,19 +1,36 @@
 <?php
 class PlomeroDAO{
 
+    private $id;
+    private $nombre;
+    private $apellido;
+    private $correo;
+    private $telefono;
+    private $clave;
+    private $id_admin;
+    private $certificado;
+
     private $Plomero;
-    public function __construct($Plomero) {
-        $this->plomero = $PlomeroP;
+    public function __construct($id=0, $nombre="", $apellido="", $correo="", $clave="", $telefono="",$id_admin="", $certificado="") {
+        $this -> id = $id;
+        $this -> nombre = $nombre;
+        $this -> apellido = $apellido;
+        $this -> correo = $correo;
+        $this -> telefono = $telefono;
+        $this -> clave = $clave;
+       $this -> id_admin = $id_admin;
+        $this -> certificado= $certificado;
+
     }
     
     public function crear(){
-        return "insert into plomero (nombre, apellido, correo, clave, codigo_activacion)
+        return "insert into plomero (nombre, apellido, correo, clave)
                 values (
                 '" . $this -> nombre . "',
                 '" . $this -> apellido . "',
                 '" . $this -> correo . "',
-                '" . md5($this -> clave) . "',
-                '" . $this -> codigo_activacion . "'
+                '" . $this -> clave . "'
+               
                 )";
     }
     
@@ -26,9 +43,16 @@ class PlomeroDAO{
     
     public function Consultar(){
         return "select nombre, apellido, correo
-                from administrador
-                where idAdministrador = '" . $this -> id . "'";
+                from plomero
+                where idPlomero = '" . $this -> id . "'";
     }
+
+
+    public function consultarTodos(){
+        return "select idPlomero, Nombre, Apellido, Correo, Telefono, Certificado_idCertificado
+                from plomero";
+    }
+
     
     
   

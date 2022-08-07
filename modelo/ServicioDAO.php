@@ -1,6 +1,7 @@
 <?php
 
 include_once './modelo/FacturaDAO.php';
+include_once './modelo/Cliente.php';
 include_once './modelo/Detalle_ServicioDAO.php';
 
 class ServicioDAO {
@@ -76,6 +77,28 @@ class ServicioDAO {
         
         $stmt->closeCursor();
         $stmt = null;
+    }
+
+    static public function obtenerDatosServicio($idServicio){
+        $con = Conexion::conectar();
+        $stmt = $con->prepare("SELECT * FROM servicio WHERE idServicio = $idServicio");
+        $stmt->execute();
+        $res = $stmt->fetchAll();
+        $stmt->closeCursor();
+        $stmt = null;
+
+        $cliente = Cliente::obtenerDatosServicio($idServicio);
+
+        $factura = new FacturaDAO(null);
+        $factura->obtenerDatosFactura($idServicio);
+
+        $detalleServicio = new Detalle_ServicioDAO(null);
+        $detalleServicio->obtenerDatos($idServicio);
+
+        $servicio = new Servicio(0,0);
+        $servicio->obtenerDatos($res[0]['idServicio'], $res[0]['Fecha'], $cliente, $res[0]['Tipo_Servicio_idTipo_Servicio'], $res[0]['Direccion'], $factura, $res[0]['Valor_Servicio'], $detalleServicio, $res[0]['Administrador_idAdministrador'], $res[0]['Estado_idEstado']);
+
+        return $servicio;
     }
     
     

@@ -1,4 +1,6 @@
 <?php
+
+
 class ClienteDAO{
     private $id;
     private $nombre;
@@ -55,7 +57,6 @@ class ClienteDAO{
     public function consultarUltimoId(){
         return "select last_insert_id()";
     }
-    
     
   
 }
