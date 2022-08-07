@@ -46,6 +46,12 @@ class ctrCliente{
 
     }
 
+    static public function getTipoServicio($idTipServicio){
+
+        return ServicioDAO::getTipoServicio($idTipServicio);
+        
+    }
+
     
     
 
