@@ -47,7 +47,22 @@ class Servicio {
         $this->estado = $estado;
     }
 
-    
+
+    public function consultarTodos(){
+        $this -> Conexion -> abrir();
+        $this -> Conexion -> ejecutar($this -> ServicioDAO -> consultarTodos());
+        echo $this -> PlomeroDAO -> consultarTodos();
+        $plomeros = array();
+        while(($registro = $this -> Conexion -> extraer()) != null){
+            $Certificado = new Certificado($registro[5]);
+            $Certificado -> consultar();
+           
+            $plomero= new Plomero($registro[0], $registro[1], $registro[2], $registro[3], $registro[4], $registro[5]);
+            array_push($plomeros, $plomero);
+        }
+        $this -> Conexion -> cerrar();
+        return  $plomeros;
+    }
     
     
     function getId() {

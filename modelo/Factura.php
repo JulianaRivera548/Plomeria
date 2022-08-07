@@ -33,6 +33,8 @@ class Factura {
         }
         return $this->valor_total;
     }
+
+   
             
     
     function getId() {

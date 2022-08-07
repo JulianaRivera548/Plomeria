@@ -30,7 +30,7 @@ echo '<script>
     $Plomero = new Plomero("","","", $correo, $clave);
         if($Plomero ->autenticar()){
 
-            $_SESSION["id"] = $Cliente -> getId();
+            $_SESSION["id"] = $Plomero -> getId();
 
             echo "Hola";
             echo '<script>

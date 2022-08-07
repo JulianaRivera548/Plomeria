@@ -33,6 +33,8 @@ class ctrPlomero{
         $resp = MostrarDAO::mostraract($val);
         return $resp;
     }
+
+
 }
 
 

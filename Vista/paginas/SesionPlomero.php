@@ -1,15 +1,8 @@
 <?php 
+$plomero = new Plomero($_SESSION["id"]);
+$plomero -> consultar();
+	
 
-	if(!isset($_SESSION)){
-		session_start();
-	}
-
-	//$tipoServicio = ctrPlomero::mostrar1($_SESSION['idusu']);
-
-    
-    if(!(isset($_SESSION['error']))){
-      $_SESSION['error'] = "";
-    }
     
 ?>
 
@@ -54,13 +47,11 @@
 	<div class="row mt-3">
 		
 		<div class="col text-center">
-		<?php	
-            #foreach($tipoServicio as $key => $value){
-        ?>
+		
 		<div class="card card text-dark bg-light">
-			<h5 class="card-header"><?php/* echo $value['Nombre']*/?></h5>
+			<h5 class="card-header"><?php echo $plomero -> getNombre() . " " . $plomero -> getApellido() ?></h5>
 			<div class="card-body">
-			<?php /*echo $value['Correo']*/?>
+			<?php echo $plomero -> getCorreo() ?>
 			</div>
 		</div>
 		<?php	

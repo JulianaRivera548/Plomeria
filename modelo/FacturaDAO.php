@@ -71,7 +71,24 @@ class FacturaDAO {
         $this->factura->obtenerDatos($res[0]['idFactura'], $res[0]['Valor_Total'], $res[0]['Valor_Visita'], $res[0]['Fecha']);
         return $this->factura;
     }
-            
+
+    function Total($valor, $idFactura){
+        $visita = 0;
+        $stmt = Conexion::conectar()->prepare("UPDATE Factura SET Valor_Total = :valor  WHERE idFactura = :idFactura");
+        $stmt->bindParam(':valorTotal', $valor);
+        $stmt->bindParam(':idFactura', $idFactura);
+        $stmt->execute();
+        $stmt->closeCursor();
+        $stmt = null;
+    }  
+
+
+    static public function Asignar_total($val1, $val2){
+        $stmt2 = Conexion::conectar()->prepare("UPDATE factura SET Valor_Total=$val1 where idFactura = $val2");
+        $stmt2->execute();
+        $stmt2->closeCursor();
+        $stmt2 = null;
+    }
 
     function getFactura() {
         return $this->factura;

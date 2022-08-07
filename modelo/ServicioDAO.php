@@ -6,9 +6,19 @@ include_once './modelo/Detalle_ServicioDAO.php';
 
 class ServicioDAO {
     private $servicio;
+    private 
     
     function __construct($servicio) {
+
+        
         $this->servicio = $servicio;
+    }
+
+
+
+    public function consultarTodos(){
+        return "select idPlomero, Nombre, Apellido, Correo, Telefono, Certificado_idCertificado
+                from plomero";
     }
     
     function insertarServicio($idCliente, $detSer){

@@ -26,7 +26,7 @@ $administrador -> consultar();
           <ul class="dropdown-menu">
             
             <li><a class="dropdown-item" href="./index.php?pagina=ConsultarPlomeros">Plomeros</a></li>
-            <li><a class="dropdown-item" href="Vista/paginas/ConsultarServicio.php">Servicios</a></li>
+            <li><a class="dropdown-item" href="./index.php?pagina=ConsultarServiciosAdmin">Servicios</a></li>
           </ul>
         </li>
 		</ul>

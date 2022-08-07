@@ -37,6 +37,15 @@ class MostrarDAO{
         $stmt->close();
         $stmt = null;
     }
+
+
+    static public function mostrarSer($tabla,$tabla2,$tabla3,$tabla4,$tabla5){
+        $stmt = Conexion::conectar()->prepare("SELECT cl.Nombre, se.idServicio ,cl.idCliente,se.id_plomero,fac.idFactura,fac.Valor_total, se.Valor_Servicio,dt.idDetalle_Servicio ,dt.Descripcion,dt.Insumos, se.Fecha AS Fecha1 , fac.Fecha AS Fecha2 FROM $tabla2 se JOIN $tabla pl ON(se.id_plomero = pl.idPlomero) JOIN $tabla3 cl ON(cl.idCliente=se.Cliente_idCliente) JOIN $tabla4 dt ON(dt.idDetalle_Servicio = se.Detalle_Servicio_idDetalle_Servicio) JOIN $tabla5 fac ON (fac.idFactura=se.Factura_idFactura)");
+        $stmt->execute();
+        return $stmt->fetchAll();
+        $stmt->close();
+        $stmt = null;
+    }
    
 
     
@@ -69,5 +78,23 @@ class MostrarDAO{
         $stmt2->close();
         $stmt2 = null;
     }
+
+
+    static public function Asignar_Plomero($val1, $val2){
+        $stmt2 = Conexion::conectar()->prepare("UPDATE servicio SET id_plomero=$val1 where idServicio = $val2");
+        $stmt2->execute();
+        $stmt2->closeCursor();
+        $stmt2 = null;
+    }
+
+    static public function Asignar_fecha($val1, $val2){
+        $stmt2 = Conexion::conectar()->prepare("UPDATE servicio SET Fecha='$val1' where idServicio = $val2");
+        $stmt2->execute();
+        $stmt2->closeCursor();
+        $stmt2 = null;
+    }
+
+   
 }
+
 ?>

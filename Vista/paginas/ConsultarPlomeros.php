@@ -18,7 +18,7 @@ $Plomero = $Plomeros -> consultarTodos();
 								<th>Apellido</th>
 								<th>Correo</th>
 								<th>Telefono</th>
-								<th>Certificado</th>
+							
 							</tr>
 						
 						</thead>
@@ -33,7 +33,7 @@ $Plomero = $Plomeros -> consultarTodos();
 							    echo "<td>" . $plomeroactual -> getApellido() . "</td>";
 							    echo "<td>" . $plomeroactual -> getCorreo() . "</td>";
 							    echo "<td>" . $plomeroactual -> getTelefono(). "</td>";
-								echo "<td>" . $plomeroactual -> getCertificado()->getEspecialidad(). "</td>";
+							
 							    echo "</tr>";							    
 							}
 							?>

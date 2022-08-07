@@ -115,17 +115,27 @@ class Plomero{
     public function consultarTodos(){
         $this -> Conexion -> abrir();
         $this -> Conexion -> ejecutar($this -> PlomeroDAO -> consultarTodos());
-        echo $this -> PlomeroDAO -> consultarTodos();
+    
         $plomeros = array();
         while(($registro = $this -> Conexion -> extraer()) != null){
-            $Certificado= new Certificado($registro[5]);
+            $Certificado = new Certificado($registro[5]);
             $Certificado -> consultar();
-            echo $Certificado -> consultar();
+           
             $plomero= new Plomero($registro[0], $registro[1], $registro[2], $registro[3], $registro[4], $registro[5]);
             array_push($plomeros, $plomero);
         }
         $this -> Conexion -> cerrar();
         return  $plomeros;
+    }
+
+    public function consultar(){
+        $this -> Conexion -> abrir();
+        $this -> Conexion -> ejecutar($this -> PlomeroDAO -> consultar());
+        $this -> Conexion -> cerrar();
+        $datos = $this -> Conexion -> extraer();
+        $this -> nombre = $datos[0];
+        $this -> apellido = $datos[1];
+        $this -> correo = $datos[2];
     }
 
     

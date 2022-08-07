@@ -12,6 +12,7 @@ class ctrPlantilla{
         include_once "modelo/ClienteDAO.php";
         include_once "modelo/Plomero.php";
         include_once "modelo/Certificado.php";
+        include_once "modelo/Plomero.php";
          //include_once "modelo/.php";
         include "Vista/plantilla.php";
     }
